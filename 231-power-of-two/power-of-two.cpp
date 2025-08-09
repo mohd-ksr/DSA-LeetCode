@@ -11,6 +11,8 @@ public:
         // return c==1;
 
         // O(1) solution..
+
+        
         return n<1?false:(n&(n-1))==0?true:false;
     }
 };
