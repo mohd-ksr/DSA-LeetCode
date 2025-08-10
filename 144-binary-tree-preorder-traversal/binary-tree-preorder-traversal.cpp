@@ -1,0 +1,44 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+private:
+    void answer(TreeNode* root,vector<int>&ans){
+        if(!root)return;
+        ans.push_back(root->val);
+        answer(root->left,ans);
+        answer(root->right,ans);
+    }
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        // recursive---
+        // vector<int>ans;
+        // if(!root)return ans;
+        // answer(root,ans);
+
+        // Iterative--
+        vector<int>ans;
+        if(!root)return ans;
+        stack<TreeNode*>st;
+        st.push(root);
+        while(!st.empty()){
+            TreeNode*node=st.top();
+            st.pop();
+            ans.push_back(node->val);
+            if(node->right)st.push(node->right);
+            if(node->left)st.push(node->left);
+        }
+        return ans;
+    }
+};
+
+// Time Complexity O(n)
+// Space Complexity O(n)
