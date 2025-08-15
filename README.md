@@ -1,7 +1,6 @@
 # ​ DSA & LeetCode Solutions
 
 ![LeetCode Badge](https://img.shields.io/badge/LeetCode-Progress-orange?style=for-the-badge&logo=leetcode)
-![Problems Solved](https://img.shields.io/badge/Problems%20Solved-28-success?style=for-the-badge)
 ![Language: C++17](https://img.shields.io/badge/Language-C%2B%2B–17-blue?style=for-the-badge)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
