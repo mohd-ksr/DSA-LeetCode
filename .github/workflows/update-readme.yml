@@ -6,53 +6,34 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write   # allow this workflow to push commits
+  contents: write
 
 jobs:
-  update-badge:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Count problem folders
-        run: |
-          COUNT=$(find . -maxdepth 1 -type d ! -name ".git" ! -name "." ! -name ".github" | wc -l)
-          sed -i "s/Problems%20Solved-[0-9]*/Problems%20Solved-$COUNT/" README.md
-
-      - name: Commit and push
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          git commit -m "Update problem count badge to $COUNT" || echo "No changes"
-          git push
-          
-  update-readme:
+  update-readme-and-badge:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
-      - name: Generate problem count and index (in-place)
+      - name: Update badge and index
         run: |
+          COUNT=$(find . -maxdepth 1 -type d ! -name ".git" ! -name "." ! -name ".github" | wc -l)
+          sed -i "s/Problems%20Solved-[0-9]*/Problems%20Solved-$COUNT/" README.md
+          
           python3 - << 'PY'
           import os, re, sys, pathlib
 
           ROOT = pathlib.Path(".").resolve()
           README = ROOT / "README.md"
-
-          # Folders to ignore at repo root
           IGNORE = {".git", ".github", "scripts", ".vscode", ".idea", "__pycache__", "assets"}
-          
-          # Collect candidate problem directories at repo root
+
           dirs = []
           for d in sorted(p for p in ROOT.iterdir() if p.is_dir()):
               name = d.name
@@ -60,7 +41,6 @@ jobs:
                   continue
               dirs.append(d)
 
-          # Sort: if folder starts with number-..., sort numerically; else alpha
           def sort_key(p: pathlib.Path):
               n = p.name
               if "-" in n:
@@ -70,10 +50,8 @@ jobs:
               return (1, n.lower())
           dirs.sort(key=sort_key)
 
-          # Count problems as number of problem folders
           problem_count = len(dirs)
 
-          # Build index table
           lines = []
           lines.append("## 📊 Problem Count")
           lines.append(f"**Total Problems Solved:** {problem_count}")
@@ -87,7 +65,6 @@ jobs:
           for d in dirs:
               rownum += 1
               folder = d.name
-              # Description = first non-empty line from the folder's README.md (if present)
               desc = ""
               folder_readme = d / "README.md"
               if folder_readme.exists():
@@ -97,7 +74,6 @@ jobs:
                           if s:
                               desc = s
                               break
-              # Find a .cpp solution (first one)
               cpp = "-"
               for child in sorted(d.iterdir()):
                   if child.is_file() and child.suffix == ".cpp":
@@ -108,7 +84,6 @@ jobs:
 
           generated = "\n".join(lines) + "\n"
 
-          # Read root README and replace content between markers
           if not README.exists():
               print("Root README.md not found.", file=sys.stderr)
               sys.exit(1)
@@ -116,28 +91,23 @@ jobs:
           content = README.read_text(encoding="utf-8")
           start_marker = r"<!-- AUTO-GEN: START \(do not remove or edit this line\) -->"
           end_marker   = r"<!-- AUTO-GEN: END -->"
-
-          pattern = re.compile(
-              start_marker + r".*?" + end_marker,
-              flags=re.DOTALL
-          )
-
+          pattern = re.compile(start_marker + r".*?" + end_marker, flags=re.DOTALL)
           replacement = f"<!-- AUTO-GEN: START (do not remove or edit this line) -->\n{generated}<!-- AUTO-GEN: END -->"
 
           if pattern.search(content):
               content = pattern.sub(replacement, content)
           else:
-              # If markers missing, append at end (keeps you safe)
               content = content.rstrip() + "\n\n" + replacement + "\n"
 
           README.write_text(content, encoding="utf-8")
           print(f"Updated README with {problem_count} problems.")
           PY
 
-      - name: Commit and push changes
+      - name: Commit and push
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
           git add README.md
-          git commit -m "Auto-update README: problem count & index" || echo "No changes to commit"
+          git commit -m "Auto-update README & badge" || echo "No changes"
           git push
