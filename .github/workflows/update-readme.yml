@@ -9,6 +9,27 @@ permissions:
   contents: write   # allow this workflow to push commits
 
 jobs:
+  update-badge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Count problem folders
+        run: |
+          COUNT=$(find . -maxdepth 1 -type d ! -name ".git" ! -name "." ! -name ".github" | wc -l)
+          sed -i "s/Problems%20Solved-[0-9]*/Problems%20Solved-$COUNT/" README.md
+
+      - name: Commit and push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "Update problem count badge to $COUNT" || echo "No changes"
+          git push
+          
   update-readme:
     runs-on: ubuntu-latest
     steps:
