@@ -1,113 +1,64 @@
-name: Update Problem Count and Index
+name: Update README with Problem Count and Index
 
 on:
   push:
-    branches: [ main ]
+    paths:
+      - "**/*.cpp"
+      - "**/*.py"
+      - "**/*.java"
+      - "**/*.md"
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
-  update-readme-and-badge:
+  update-readme:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.x'
-
-      - name: Update badge and index
-        run: |
-          COUNT=$(find . -maxdepth 1 -type d ! -name ".git" ! -name "." ! -name ".github" | wc -l)
-          sed -i "s/Problems%20Solved-[0-9]*/Problems%20Solved-$COUNT/" README.md
-          
-          python3 - << 'PY'
-          import os, re, sys, pathlib
-
-          ROOT = pathlib.Path(".").resolve()
-          README = ROOT / "README.md"
-          IGNORE = {".git", ".github", "scripts", ".vscode", ".idea", "__pycache__", "assets"}
-
-          dirs = []
-          for d in sorted(p for p in ROOT.iterdir() if p.is_dir()):
-              name = d.name
-              if name in IGNORE or name.startswith(".") or name.startswith("_"):
-                  continue
-              dirs.append(d)
-
-          def sort_key(p: pathlib.Path):
-              n = p.name
-              if "-" in n:
-                  first = n.split("-")[0]
-                  if first.isdigit():
-                      return (0, int(first), n.lower())
-              return (1, n.lower())
-          dirs.sort(key=sort_key)
-
-          problem_count = len(dirs)
-
-          lines = []
-          lines.append("## 📊 Problem Count")
-          lines.append(f"**Total Problems Solved:** {problem_count}")
-          lines.append("")
-          lines.append("## 📚 Problem Index")
-          lines.append("")
-          lines.append("| # | Folder | Description | Solution |")
-          lines.append("|---:|--------|-------------|----------|")
-
-          rownum = 0
-          for d in dirs:
-              rownum += 1
-              folder = d.name
-              desc = ""
-              folder_readme = d / "README.md"
-              if folder_readme.exists():
-                  with open(folder_readme, "r", encoding="utf-8", errors="ignore") as f:
-                      for line in f:
-                          s = line.strip()
-                          if s:
-                              desc = s
-                              break
-              cpp = "-"
-              for child in sorted(d.iterdir()):
-                  if child.is_file() and child.suffix == ".cpp":
-                      cpp = f"[{child.name}]({folder}/{child.name})"
-                      break
-
-              lines.append(f"| {rownum} | [{folder}]({folder}) | {desc} | {cpp} |")
-
-          generated = "\n".join(lines) + "\n"
-
-          if not README.exists():
-              print("Root README.md not found.", file=sys.stderr)
-              sys.exit(1)
-
-          content = README.read_text(encoding="utf-8")
-          start_marker = r"<!-- AUTO-GEN: START \(do not remove or edit this line\) -->"
-          end_marker   = r"<!-- AUTO-GEN: END -->"
-          pattern = re.compile(start_marker + r".*?" + end_marker, flags=re.DOTALL)
-          replacement = f"<!-- AUTO-GEN: START (do not remove or edit this line) -->\n{generated}<!-- AUTO-GEN: END -->"
-
-          if pattern.search(content):
-              content = pattern.sub(replacement, content)
-          else:
-              content = content.rstrip() + "\n\n" + replacement + "\n"
-
-          README.write_text(content, encoding="utf-8")
-          print(f"Updated README with {problem_count} problems.")
-          PY
-
-      - name: Commit and push
+      - name: Configure Git
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git pull --rebase origin main
+
+      - name: Sync with remote
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
+
+      - name: Count problems
+        id: count
+        run: |
+          COUNT=$(find . -type f \( -name "*.cpp" -o -name "*.py" -o -name "*.java" \) | wc -l)
+          echo "COUNT=$COUNT" >> $GITHUB_ENV
+
+      - name: Generate index table
+        run: |
+          INDEX="| # | Problem Name | Link |\n|---|--------------|------|\n"
+          i=1
+          for dir in $(find . -maxdepth 1 -type d ! -path . | sort); do
+            problem=$(basename "$dir")
+            INDEX+="| $i | $problem | [$problem]($problem) |\n"
+            i=$((i+1))
+          done
+          echo -e "$INDEX" > index_table.md
+
+      - name: Update README
+        run: |
+          COUNT_BADGE="![Problems Solved](https://img.shields.io/badge/Problems%20Solved-$COUNT-brightgreen)"
+          awk -v badge="$COUNT_BADGE" 'NR==1{print badge} {print}' README.md > temp && mv temp README.md
+
+          # Append Index Table
+          echo -e "\n## 📚 Problem Index\n" >> README.md
+          cat index_table.md >> README.md
+
+      - name: Commit and push changes
+        run: |
           git add README.md
-          git commit -m "Auto-update README & badge" || echo "No changes"
-          git push
+          git commit -m "Auto-update README: problem count & index" || echo "No changes to commit"
+          git push origin main
