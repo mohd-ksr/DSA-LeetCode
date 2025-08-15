@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write  # ✅ allows the action to push commits
+  contents: write  # allows the action to push commits
 
 jobs:
   update-badge:
@@ -15,11 +15,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}  # ✅ authenticate with repo access
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Count .cpp files
+      - name: Count problem folders
         run: |
-          COUNT=$(find . -maxdepth 1 -type f -name "*.cpp" | wc -l)
+          COUNT=$(find . -maxdepth 1 -type d ! -name ".git" ! -name "." ! -name ".github" | wc -l)
           sed -i "s/Problems%20Solved-[0-9]*/Problems%20Solved-$COUNT/" README.md
 
       - name: Commit and push
