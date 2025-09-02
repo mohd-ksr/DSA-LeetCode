@@ -41,7 +41,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 <!-- AUTO-GEN: START (do not remove or edit this line) -->
 ## 📊 Problem Count
-**Total Problems Solved:** 41
+**Total Problems Solved:** 42
 
 ## 📚 Problem Index
 
@@ -88,4 +88,5 @@ This project is licensed under the [MIT License](LICENSE).
 | 39 | [2529-range-product-queries-of-powers](2529-range-product-queries-of-powers) | <h2><a href="https://leetcode.com/problems/range-product-queries-of-powers">Range Product Queries of Powers</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p>Given a positive integer <code>n</code>, there exists a <strong>0-indexed</strong> array called <code>powers</code>, composed of the <strong>minimum</strong> number of powers of <code>2</code> that sum to <code>n</code>. The array is sorted in <strong>non-decreasing</strong> order, and there is <strong>only one</strong> way to form the array.</p> | [range-product-queries-of-powers.cpp](2529-range-product-queries-of-powers/range-product-queries-of-powers.cpp) |
 | 40 | [2882-ways-to-express-an-integer-as-sum-of-powers](2882-ways-to-express-an-integer-as-sum-of-powers) | <h2><a href="https://leetcode.com/problems/ways-to-express-an-integer-as-sum-of-powers">Ways to Express an Integer as Sum of Powers</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p>Given two <strong>positive</strong> integers <code>n</code> and <code>x</code>.</p> | [ways-to-express-an-integer-as-sum-of-powers.cpp](2882-ways-to-express-an-integer-as-sum-of-powers/ways-to-express-an-integer-as-sum-of-powers.cpp) |
 | 41 | [3251-maximum-area-of-longest-diagonal-rectangle](3251-maximum-area-of-longest-diagonal-rectangle) | <h2><a href="https://leetcode.com/problems/maximum-area-of-longest-diagonal-rectangle">Maximum Area of Longest Diagonal Rectangle</a></h2> <img src='https://img.shields.io/badge/Difficulty-Easy-brightgreen' alt='Difficulty: Easy' /><hr><p>You are given a 2D <strong>0-indexed </strong>integer array <code>dimensions</code>.</p> | [maximum-area-of-longest-diagonal-rectangle.cpp](3251-maximum-area-of-longest-diagonal-rectangle/maximum-area-of-longest-diagonal-rectangle.cpp) |
+| 42 | [3278-find-the-number-of-ways-to-place-people-i](3278-find-the-number-of-ways-to-place-people-i) | <h2><a href="https://leetcode.com/problems/find-the-number-of-ways-to-place-people-i">Find the Number of Ways to Place People I</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p>You are given a 2D array <code>points</code> of size <code>n x 2</code> representing integer coordinates of some points on a 2D plane, where <code>points[i] = [x<sub>i</sub>, y<sub>i</sub>]</code>.</p> | [find-the-number-of-ways-to-place-people-i.cpp](3278-find-the-number-of-ways-to-place-people-i/find-the-number-of-ways-to-place-people-i.cpp) |
 <!-- AUTO-GEN: END -->
