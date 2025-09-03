@@ -60,6 +60,7 @@ public:
         return root;
     }
 };
+// Time and Space complexity O(n)
 
 // Your Codec object will be instantiated and called as such:
 // Codec ser, deser;
