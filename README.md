@@ -41,7 +41,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 <!-- AUTO-GEN: START (do not remove or edit this line) -->
 ## 📊 Problem Count
-**Total Problems Solved:** 45
+**Total Problems Solved:** 46
 
 ## 📚 Problem Index
 
@@ -92,4 +92,5 @@ This project is licensed under the [MIT License](LICENSE).
 | 43 | [3251-maximum-area-of-longest-diagonal-rectangle](3251-maximum-area-of-longest-diagonal-rectangle) | <h2><a href="https://leetcode.com/problems/maximum-area-of-longest-diagonal-rectangle">Maximum Area of Longest Diagonal Rectangle</a></h2> <img src='https://img.shields.io/badge/Difficulty-Easy-brightgreen' alt='Difficulty: Easy' /><hr><p>You are given a 2D <strong>0-indexed </strong>integer array <code>dimensions</code>.</p> | [maximum-area-of-longest-diagonal-rectangle.cpp](3251-maximum-area-of-longest-diagonal-rectangle/maximum-area-of-longest-diagonal-rectangle.cpp) |
 | 44 | [3277-find-the-number-of-ways-to-place-people-ii](3277-find-the-number-of-ways-to-place-people-ii) | <h2><a href="https://leetcode.com/problems/find-the-number-of-ways-to-place-people-ii">Find the Number of Ways to Place People II</a></h2> <img src='https://img.shields.io/badge/Difficulty-Hard-red' alt='Difficulty: Hard' /><hr><p>You are given a 2D array <code>points</code> of size <code>n x 2</code> representing integer coordinates of some points on a 2D-plane, where <code>points[i] = [x<sub>i</sub>, y<sub>i</sub>]</code>.</p> | [find-the-number-of-ways-to-place-people-ii.cpp](3277-find-the-number-of-ways-to-place-people-ii/find-the-number-of-ways-to-place-people-ii.cpp) |
 | 45 | [3278-find-the-number-of-ways-to-place-people-i](3278-find-the-number-of-ways-to-place-people-i) | <h2><a href="https://leetcode.com/problems/find-the-number-of-ways-to-place-people-i">Find the Number of Ways to Place People I</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p>You are given a 2D array <code>points</code> of size <code>n x 2</code> representing integer coordinates of some points on a 2D plane, where <code>points[i] = [x<sub>i</sub>, y<sub>i</sub>]</code>.</p> | [find-the-number-of-ways-to-place-people-i.cpp](3278-find-the-number-of-ways-to-place-people-i/find-the-number-of-ways-to-place-people-i.cpp) |
+| 46 | [3830-find-closest-person](3830-find-closest-person) | <h2><a href="https://leetcode.com/problems/find-closest-person">Find Closest Person</a></h2> <img src='https://img.shields.io/badge/Difficulty-Easy-brightgreen' alt='Difficulty: Easy' /><hr><p data-end="116" data-start="0">You are given three integers <code data-end="33" data-start="30">x</code>, <code data-end="38" data-start="35">y</code>, and <code data-end="47" data-start="44">z</code>, representing the positions of three people on a number line:</p> | [find-closest-person.cpp](3830-find-closest-person/find-closest-person.cpp) |
 <!-- AUTO-GEN: END -->
