@@ -41,7 +41,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 <!-- AUTO-GEN: START (do not remove or edit this line) -->
 ## 📊 Problem Count
-**Total Problems Solved:** 67
+**Total Problems Solved:** 68
 
 ## 📚 Problem Index
 
@@ -114,4 +114,5 @@ This project is licensed under the [MIT License](LICENSE).
 | 65 | [3462-vowels-game-in-a-string](3462-vowels-game-in-a-string) | <h2><a href="https://leetcode.com/problems/vowels-game-in-a-string">Vowels Game in a String</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p>Alice and Bob are playing a game on a string.</p> | [vowels-game-in-a-string.cpp](3462-vowels-game-in-a-string/vowels-game-in-a-string.cpp) |
 | 66 | [3744-minimum-operations-to-make-array-elements-zero](3744-minimum-operations-to-make-array-elements-zero) | <h2><a href="https://leetcode.com/problems/minimum-operations-to-make-array-elements-zero">Minimum Operations to Make Array Elements Zero</a></h2> <img src='https://img.shields.io/badge/Difficulty-Hard-red' alt='Difficulty: Hard' /><hr><p>You are given a 2D array <code>queries</code>, where <code>queries[i]</code> is of the form <code>[l, r]</code>. Each <code>queries[i]</code> defines an array of integers <code>nums</code> consisting of elements ranging from <code>l</code> to <code>r</code>, both <strong>inclusive</strong>.</p> | [minimum-operations-to-make-array-elements-zero.cpp](3744-minimum-operations-to-make-array-elements-zero/minimum-operations-to-make-array-elements-zero.cpp) |
 | 67 | [3830-find-closest-person](3830-find-closest-person) | <h2><a href="https://leetcode.com/problems/find-closest-person">Find Closest Person</a></h2> <img src='https://img.shields.io/badge/Difficulty-Easy-brightgreen' alt='Difficulty: Easy' /><hr><p data-end="116" data-start="0">You are given three integers <code data-end="33" data-start="30">x</code>, <code data-end="38" data-start="35">y</code>, and <code data-end="47" data-start="44">z</code>, representing the positions of three people on a number line:</p> | [find-closest-person.cpp](3830-find-closest-person/find-closest-person.cpp) |
+| 68 | [3872-find-most-frequent-vowel-and-consonant](3872-find-most-frequent-vowel-and-consonant) | <h2><a href="https://leetcode.com/problems/find-most-frequent-vowel-and-consonant">Find Most Frequent Vowel and Consonant</a></h2> <img src='https://img.shields.io/badge/Difficulty-Easy-brightgreen' alt='Difficulty: Easy' /><hr><p>You are given a string <code>s</code> consisting of lowercase English letters (<code>&#39;a&#39;</code> to <code>&#39;z&#39;</code>). </p> | [find-most-frequent-vowel-and-consonant.cpp](3872-find-most-frequent-vowel-and-consonant/find-most-frequent-vowel-and-consonant.cpp) |
 <!-- AUTO-GEN: END -->
