@@ -13,3 +13,4 @@ public:
         return ans;
     }
 };
+// Time complexity O(1)
