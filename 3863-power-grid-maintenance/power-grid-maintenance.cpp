@@ -55,3 +55,4 @@ public:
 
     }
 };
+// Time Complexity O(c+len(queries))
