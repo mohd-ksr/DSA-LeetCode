@@ -10,3 +10,4 @@ public:
         return ans;
     }
 };
+// Time complexity O(Min(Num1,Num2))
