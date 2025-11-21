@@ -22,3 +22,5 @@ public:
         return ans;
     }
 };
+// Time Complexity O(26*n);
+// Space Compexity (1)
