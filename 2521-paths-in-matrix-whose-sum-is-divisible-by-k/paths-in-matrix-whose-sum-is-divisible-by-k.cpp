@@ -19,3 +19,5 @@ public:
         return dfs(grid,n,m,0,0,0,k,dp);
     }
 };
+// Time Complexity O(n*m*k)
+// Space Complexity O(n*m*k)
