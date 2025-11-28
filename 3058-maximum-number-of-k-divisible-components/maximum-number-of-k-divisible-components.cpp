@@ -24,3 +24,5 @@ public:
         return c;
     }
 };
+// Time Complexity O(n)
+// Space Complexity O(n)
