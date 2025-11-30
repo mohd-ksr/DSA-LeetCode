@@ -1,22 +1,18 @@
 class Solution {
 public:
-    int majorityElement(vector<int>& nums) {       
-        int majority = nums[0], count = 1;
-        for(int i=1;i<nums.size();i++){
-            if(nums[i] == majority){
-                count = count + 1;
-            }
-            else if(nums[i]!=majority){
-                if(count!=0){
-                    count = count - 1;
-                }
+    int majorityElement(vector<int>& nums) {
+        int m = nums[0], c = 1;
+        for(int i=1; i<nums.size(); i++){
+            if(nums[i]==m)c++;
+            else{
+                if(c!=0)c--;
                 else{
-                    majority = nums[i];
-                    count = 1;
+                    m=nums[i];
+                    c=1;
                 }
             }
         }
-        return majority;
+        return m;
     }
 };
 // Time complexity O(n)
