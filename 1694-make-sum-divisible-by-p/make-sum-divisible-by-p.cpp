@@ -21,3 +21,5 @@ public:
         return ans==n?-1:ans;
     }
 };
+// Time complexity O(n)
+// Space complexity O(n)
