@@ -41,7 +41,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 <!-- AUTO-GEN: START (do not remove or edit this line) -->
 ## 📊 Problem Count
-**Total Problems Solved:** 185
+**Total Problems Solved:** 186
 
 ## 📚 Problem Index
 
@@ -232,4 +232,5 @@ This project is licensed under the [MIT License](LICENSE).
 | 183 | [3851-find-sum-of-array-product-of-magical-sequences](3851-find-sum-of-array-product-of-magical-sequences) | <h2><a href="https://leetcode.com/problems/find-sum-of-array-product-of-magical-sequences">Find Sum of Array Product of Magical Sequences</a></h2> <img src='https://img.shields.io/badge/Difficulty-Hard-red' alt='Difficulty: Hard' /><hr><p>You are given two integers, <code>m</code> and <code>k</code>, and an integer array <code>nums</code>.</p> | [find-sum-of-array-product-of-magical-sequences.cpp](3851-find-sum-of-array-product-of-magical-sequences/find-sum-of-array-product-of-magical-sequences.cpp) |
 | 184 | [3863-power-grid-maintenance](3863-power-grid-maintenance) | <h2><a href="https://leetcode.com/problems/power-grid-maintenance">Power Grid Maintenance</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p data-end="401" data-start="120">You are given an integer <code data-end="194" data-start="191">c</code> representing <code data-end="211" data-start="208">c</code> power stations, each with a unique identifier <code>id</code> from 1 to <code>c</code> (1‑based indexing).</p> | [power-grid-maintenance.cpp](3863-power-grid-maintenance/power-grid-maintenance.cpp) |
 | 185 | [3872-find-most-frequent-vowel-and-consonant](3872-find-most-frequent-vowel-and-consonant) | <h2><a href="https://leetcode.com/problems/find-most-frequent-vowel-and-consonant">Find Most Frequent Vowel and Consonant</a></h2> <img src='https://img.shields.io/badge/Difficulty-Easy-brightgreen' alt='Difficulty: Easy' /><hr><p>You are given a string <code>s</code> consisting of lowercase English letters (<code>&#39;a&#39;</code> to <code>&#39;z&#39;</code>). </p> | [find-most-frequent-vowel-and-consonant.cpp](3872-find-most-frequent-vowel-and-consonant/find-most-frequent-vowel-and-consonant.cpp) |
+| 186 | [4087-maximum-substrings-with-distinct-start](4087-maximum-substrings-with-distinct-start) | <h2><a href="https://leetcode.com/problems/maximum-substrings-with-distinct-start">Maximum Substrings With Distinct Start</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p>You are given a string <code>s</code> consisting of lowercase English letters.</p> | [maximum-substrings-with-distinct-start.cpp](4087-maximum-substrings-with-distinct-start/maximum-substrings-with-distinct-start.cpp) |
 <!-- AUTO-GEN: END -->
