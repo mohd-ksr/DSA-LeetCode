@@ -12,3 +12,5 @@ public:
         return false;
     }
 };
+// Time Complexity O(n)
+// space Complexity O(n)
