@@ -12,3 +12,4 @@ public:
         return ans==-1?0:ans;
     }
 };
+// Time Complexity O(n)
