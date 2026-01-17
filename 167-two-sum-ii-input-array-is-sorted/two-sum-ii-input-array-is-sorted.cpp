@@ -1,14 +1,14 @@
 class Solution {
 public:
-    vector<int> twoSum(vector<int>& numbers, int target) {
-        int s = 0, e = numbers.size()-1;
-        while(s<=e){
-            int val = numbers[s]+numbers[e];
-            if(val==target)return {s+1,e+1};
-            else if(val>target)e--;
-            else s++;
+    vector<int> twoSum(vector<int>& nums, int target) {
+        int i=0;
+        int j=nums.size()-1;
+        while(i<j){
+            int sum = nums[i]+nums[j];
+            if(sum==target)return {i+1,j+1};
+            else if(sum>target)j--;
+            else i++;
         }
-        return {}; //dummy
+        return {};
     }
 };
-// Time complexity O(n)
