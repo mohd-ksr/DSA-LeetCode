@@ -1,58 +1,31 @@
 class Solution {
-private:
-    int getPivot(vector<int>nums){
-        int n=nums.size();
-        int s=0; int e=n-1;
-        while(s<e){
-            int mid=s+(e-s)/2;
-            if(nums[mid]>=nums[0]){
-                s=mid+1;
-            }
-            else{
-                e=mid;
-            }
+private:    
+    int getPivot(vector<int>&nums, int s, int e){
+        if(s>=e)return s;
+        int mid = s+(e-s)/2;
+        if(nums[mid]>=nums[0]){
+            return getPivot(nums, mid+1, e);
         }
-        return s;
+        else{
+            return getPivot(nums,s, mid);
+        }
     }
-    int binarySearch(vector<int>nums, int s, int e, int k){
-        while(s<=e){
-            int mid=s+(e-s)/2;
-            if(nums[mid]==k)return mid;
-            if(nums[mid]>k){
-                e=mid-1;
-            }
-            else{
-                s=mid+1;
-            }
-        }
-        return -1;
+    int BS(vector<int>&nums, int s, int e, int &t){
+        if(s>e)return -1;
+        int mid = s+(e-s)/2;
+        if(nums[mid]==t)return mid;
+        else if(nums[mid]>t) return BS(nums, s, mid-1, t);
+        else return BS(nums, mid+1, e, t);
     }
 public:
-    int search(vector<int>& nums, int target) {
-        // int p=getPivot(nums);
-        // int n=nums.size();
-        // if(target>=nums[p] && target<=nums[n-1]){
-        //     return binarySearch(nums,p,n-1,target);
-        // }
-        // else{
-        //     return binarySearch(nums,0,p-1,target);
-        // }
-        int n=nums.size();
-        int s=0,e=n-1;
-        while(s<=e){
-            int mid=s+(e-s)/2;
-            if(nums[mid]==target)return mid;
-            if(nums[s]<=nums[mid]){
-                if(nums[s]<=target && target<=nums[mid])e=mid-1;
-                else s=mid+1;
-            }
-            else{
-                if(nums[mid]<=target && target<=nums[e])s=mid+1;
-                else e=mid-1;
-            }
+    int search(vector<int>& nums, int t) {
+        int n = nums.size();
+        if (n == 0) return -1;
+
+        int p = getPivot(nums, 0, n-1);
+        if(t>=nums[p] && t<=nums[n-1]){
+            return BS(nums, p, n-1, t);
         }
-        return -1;
+        return BS(nums, 0, p-1, t);
     }
 };
-// Time Complexity O(log n)
-// Space Complexity O(1)
