@@ -34,3 +34,5 @@ public:
         return ans;
     }
 };
+
+// Time Complexity O(max(81));
