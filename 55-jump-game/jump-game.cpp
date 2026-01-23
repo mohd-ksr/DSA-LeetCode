@@ -13,7 +13,14 @@ private:
     }
 public:
     bool canJump(vector<int>& nums) {
-        vector<int>dp(nums.size()+1, -1);
-        return solve(0, nums, dp);
+        // vector<int>dp(nums.size()+1, -1);
+        // return solve(0, nums, dp);
+        int khaTakJaSaktaHai = 0;
+        for(int abhiYhaHai = 0; abhiYhaHai<nums.size(); abhiYhaHai++){
+            if(abhiYhaHai > khaTakJaSaktaHai)return false;
+            khaTakJaSaktaHai = max(khaTakJaSaktaHai, nums[abhiYhaHai]+abhiYhaHai);
+        }
+        return true;
+        
     }
 };
