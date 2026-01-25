@@ -16,3 +16,5 @@ public:
         return mini;
     }
 };
+
+// Time Complexity O(nlogn + n)
