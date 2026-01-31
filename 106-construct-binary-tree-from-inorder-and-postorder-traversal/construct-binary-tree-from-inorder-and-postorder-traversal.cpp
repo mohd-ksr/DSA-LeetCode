@@ -10,28 +10,31 @@
  * };
  */
 class Solution {
-public:
-    unordered_map<int, int> inorderIndex;
-    int postIndex;
+private:
+    unordered_map<int, int>inMap;
+    int pInd;
+    TreeNode* build(vector<int>& inorder, vector<int>& postorder, int is, int ie){
+        if(is>ie)return NULL;
 
-    TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
-        for (int i = 0; i < inorder.size(); i++) {
-            inorderIndex[inorder[i]] = i;
-        }
-        postIndex = postorder.size() - 1;
-        return build(inorder, postorder, 0, inorder.size() - 1);
-    }
-    TreeNode* build(vector<int>& inorder, vector<int>& postorder, int inStart, int inEnd){
-        if (inStart > inEnd) return NULL;
+        int rootVal = postorder[pInd--];
 
-        int rootVal = postorder[postIndex--];
-        TreeNode* root = new TreeNode(rootVal);
+        TreeNode * root = new TreeNode(rootVal);
 
-        int idx = inorderIndex[rootVal];
-        root->right = build(inorder, postorder, idx + 1, inEnd);
-        root->left = build(inorder, postorder, inStart, idx - 1);
+        int ind = inMap[rootVal];
+
+        root->right = build(inorder, postorder, ind+1, ie);
+        root->left =  build(inorder, postorder, is, ind-1);
+
         return root;
     }
+public:
+    TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
+        int n = inorder.size();
+        for(int i=0; i<n; i++){
+            inMap[inorder[i]]=i;
+        }
+        pInd = n-1;
+
+        return build(inorder, postorder, 0, n-1);
+    }
 };
-// Time Complexity O(n)
-// Space Complexity O(n)
