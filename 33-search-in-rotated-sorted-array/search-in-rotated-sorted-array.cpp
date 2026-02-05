@@ -1,31 +1,31 @@
 class Solution {
-private:    
-    int getPivot(vector<int>&nums, int s, int e){
-        if(s>=e)return s;
-        int mid = s+(e-s)/2;
-        if(nums[mid]>=nums[0]){
-            return getPivot(nums, mid+1, e);
+private:
+    int findP(vector<int>&nums){
+        int s = 0, e = nums.size()-1;
+        while(s<e){
+            int mid = s+(e-s)/2;
+            if(nums[mid]>=nums[0])s=mid+1;
+            else e=mid;
         }
-        else{
-            return getPivot(nums,s, mid);
-        }
+        return s;
     }
-    int BS(vector<int>&nums, int s, int e, int &t){
-        if(s>e)return -1;
-        int mid = s+(e-s)/2;
-        if(nums[mid]==t)return mid;
-        else if(nums[mid]>t) return BS(nums, s, mid-1, t);
-        else return BS(nums, mid+1, e, t);
+    int bs(vector<int>&nums, int s, int e, int target){
+        while(s<=e){
+            int mid = s+(e-s)/2;
+            if(nums[mid]==target)return mid;
+            else if(nums[mid]>target)e=mid-1;
+            else s=mid+1;
+        }
+        return -1;
     }
 public:
-    int search(vector<int>& nums, int t) {
+    int search(vector<int>& nums, int target) {
         int n = nums.size();
-        if (n == 0) return -1;
-
-        int p = getPivot(nums, 0, n-1);
-        if(t>=nums[p] && t<=nums[n-1]){
-            return BS(nums, p, n-1, t);
+        int p = findP(nums);
+        cout<<p<<" ";
+        if(target >= nums[p] && target<= nums[n-1]){
+            return bs(nums, p, n-1, target);
         }
-        return BS(nums, 0, p-1, t);
+        else return bs(nums, 0, p-1, target);
     }
 };
