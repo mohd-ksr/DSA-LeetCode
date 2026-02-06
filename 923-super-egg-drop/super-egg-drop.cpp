@@ -30,9 +30,26 @@ private:
         while(s<=e){
             int mid = s+(e-s)/2;
 
-            int b = solve(eggs-1, mid-1, dp);
-            int nb = solve(eggs, floors-mid, dp);
+            // int b = solve(eggs-1, mid-1, dp);
+            // int nb = solve(eggs, floors-mid, dp);
 
+            int b,nb;
+            if(dp[eggs-1][mid-1]!=-1){
+                b=dp[eggs-1][mid-1];
+            }
+            else{
+                b = solve(eggs-1, mid-1, dp);
+                dp[eggs-1][mid-1]=b;
+            }
+
+            if(dp[eggs][floors-mid]!=-1){
+                nb=dp[eggs][floors-mid];
+            }
+            else{
+                nb = solve(eggs, floors-mid, dp);
+                dp[eggs][floors-mid]=nb;
+            }
+            
             if(b<nb){
                 s = mid+1;
             }
