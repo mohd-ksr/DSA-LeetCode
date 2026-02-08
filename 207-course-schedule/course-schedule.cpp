@@ -17,16 +17,36 @@ private:
 public:
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
         vector<vector<int>>adjList(numCourses);
+        vector<int>inDeg(numCourses, 0);
         for(auto e:prerequisites){
             adjList[e[1]].push_back(e[0]);
+            inDeg[e[0]]++;
         }
 
-        vector<int>vis(numCourses, 0), pathVis(numCourses, 0);
+        // vector<int>vis(numCourses, 0), pathVis(numCourses, 0);
+        // for(int i=0; i<numCourses; i++){
+        //     if(!vis[i]){ 
+        //         if(dfs(i, adjList, vis, pathVis))return false;
+        //     }
+        // }
+        // return true;
+
+        int count = 0;
+        queue<int>q;
         for(int i=0; i<numCourses; i++){
-            if(!vis[i]){ 
-                if(dfs(i, adjList, vis, pathVis))return false;
-            }
+            if(inDeg[i]==0)q.push(i);
         }
-        return true;
+
+        while(!q.empty()){
+            int node = q.front(); q.pop();
+            for(int nei:adjList[node]){
+                inDeg[nei]--;
+                if(inDeg[nei]==0)q.push(nei);
+            }
+            count++;
+        }
+
+        return count==numCourses;
+
     }
 };
