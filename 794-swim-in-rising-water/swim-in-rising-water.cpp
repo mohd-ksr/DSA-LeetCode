@@ -2,33 +2,30 @@ class Solution {
 public:
     int swimInWater(vector<vector<int>>& grid) {
         int n = grid.size();
-        vector<vector<int>> visited(n, vector<int>(n, 0));
-        
-        priority_queue<vector<int>, vector<vector<int>>, greater<vector<int>>> pq;
+        vector<vector<bool>>vis(n, vector<bool>(n, false));
+        priority_queue<vector<int>, vector<vector<int>>, greater<vector<int>>>pq;
         pq.push({grid[0][0], 0, 0});
-        visited[0][0] = 1;
-
-        int time = 0;
-        vector<pair<int, int>> dirs = {{1,0}, {-1,0}, {0,1}, {0,-1}};
-
         while(!pq.empty()){
-            auto top = pq.top();
-            pq.pop();
-            int elev = top[0], r = top[1], c = top[2];
-
-            time = max(time, elev);
-
-            if(r == n-1 && c==n-1)
-                return time;
-
-            for(auto [dr, dc] : dirs){
-                int nr = r + dr, nc = c + dc;
-                if(nr >= 0 && nc >= 0 && nr < n && nc < n && !visited[nr][nc]){
-                    visited[nr][nc] = 1;
-                    pq.push({grid[nr][nc], nr, nc});
-                }
+            auto temp = pq.top(); pq.pop();
+            int time = temp[0];
+            int i = temp[1];
+            int j = temp[2];
+            if(vis[i][j])continue;
+            vis[i][j]=true;
+            if(i==n-1 && j==n-1)return time;
+            if(i-1>=0 && !vis[i-1][j]){
+                pq.push({max(time,grid[i-1][j]), i-1, j});
+            }
+            if(j-1>=0 && !vis[i][j-1]){
+                pq.push({max(time,grid[i][j-1]), i, j-1});
+            }
+            if(i+1<n && !vis[i+1][j]){
+                pq.push({max(time,grid[i+1][j]), i+1, j});
+            }
+            if(j+1<n && !vis[i][j+1]){
+                pq.push({max(time,grid[i][j+1]), i, j+1});
             }
         }
-        return -1; 
+        return -1;
     }
 };
