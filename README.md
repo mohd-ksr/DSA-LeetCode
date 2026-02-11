@@ -41,7 +41,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 <!-- AUTO-GEN: START (do not remove or edit this line) -->
 ## 📊 Problem Count
-**Total Problems Solved:** 350
+**Total Problems Solved:** 351
 
 ## 📚 Problem Index
 
@@ -396,5 +396,6 @@ This project is licensed under the [MIT License](LICENSE).
 | 347 | [3958-minimum-removals-to-balance-array](3958-minimum-removals-to-balance-array) | <h2><a href="https://leetcode.com/problems/minimum-removals-to-balance-array">Minimum Removals to Balance Array</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p>You are given an integer array <code>nums</code> and an integer <code>k</code>.</p> | [minimum-removals-to-balance-array.cpp](3958-minimum-removals-to-balance-array/minimum-removals-to-balance-array.cpp) |
 | 348 | [3980-best-time-to-buy-and-sell-stock-using-strategy](3980-best-time-to-buy-and-sell-stock-using-strategy) | <h2><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-using-strategy">Best Time to Buy and Sell Stock using Strategy</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p>You are given two integer arrays <code>prices</code> and <code>strategy</code>, where:</p> | [best-time-to-buy-and-sell-stock-using-strategy.cpp](3980-best-time-to-buy-and-sell-stock-using-strategy/best-time-to-buy-and-sell-stock-using-strategy.cpp) |
 | 349 | [4045-longest-balanced-subarray-i](4045-longest-balanced-subarray-i) | <h2><a href="https://leetcode.com/problems/longest-balanced-subarray-i">Longest Balanced Subarray I</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p>You are given an integer array <code>nums</code>.</p> | [longest-balanced-subarray-i.cpp](4045-longest-balanced-subarray-i/longest-balanced-subarray-i.cpp) |
-| 350 | [4087-maximum-substrings-with-distinct-start](4087-maximum-substrings-with-distinct-start) | <h2><a href="https://leetcode.com/problems/maximum-substrings-with-distinct-start">Maximum Substrings With Distinct Start</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p>You are given a string <code>s</code> consisting of lowercase English letters.</p> | [maximum-substrings-with-distinct-start.cpp](4087-maximum-substrings-with-distinct-start/maximum-substrings-with-distinct-start.cpp) |
+| 350 | [4047-longest-balanced-subarray-ii](4047-longest-balanced-subarray-ii) | <h2><a href="https://leetcode.com/problems/longest-balanced-subarray-ii">Longest Balanced Subarray II</a></h2> <img src='https://img.shields.io/badge/Difficulty-Hard-red' alt='Difficulty: Hard' /><hr><p>You are given an integer array <code>nums</code>.</p> | - |
+| 351 | [4087-maximum-substrings-with-distinct-start](4087-maximum-substrings-with-distinct-start) | <h2><a href="https://leetcode.com/problems/maximum-substrings-with-distinct-start">Maximum Substrings With Distinct Start</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p>You are given a string <code>s</code> consisting of lowercase English letters.</p> | [maximum-substrings-with-distinct-start.cpp](4087-maximum-substrings-with-distinct-start/maximum-substrings-with-distinct-start.cpp) |
 <!-- AUTO-GEN: END -->
