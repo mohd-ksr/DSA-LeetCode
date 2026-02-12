@@ -4,12 +4,12 @@ public:
         int n = s.length();
         int ans = 1;
         for(int i=0; i<n; i++){
-            vector<int>freq(26, 0);
+            unordered_map<int, int>freq;
             for(int j=i; j<n; j++){
                 freq[s[j]-'a']++;
                 bool ok = true;
                 for(auto it:freq){
-                    if(it>0 && it!=freq[s[i]-'a']){
+                    if(it.second>0 && it.second!=freq[s[i]-'a']){
                         ok = false;
                         break;
                     }
