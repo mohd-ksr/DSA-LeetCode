@@ -8,7 +8,6 @@ public:
             num2/=10;
             num3/=10;
         }
-
         return stoi(key);
     }
 };
