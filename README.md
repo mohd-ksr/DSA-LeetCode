@@ -41,7 +41,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 <!-- AUTO-GEN: START (do not remove or edit this line) -->
 ## 📊 Problem Count
-**Total Problems Solved:** 361
+**Total Problems Solved:** 362
 
 ## 📚 Problem Index
 
@@ -407,5 +407,6 @@ This project is licensed under the [MIT License](LICENSE).
 | 358 | [4045-longest-balanced-subarray-i](4045-longest-balanced-subarray-i) | <h2><a href="https://leetcode.com/problems/longest-balanced-subarray-i">Longest Balanced Subarray I</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p>You are given an integer array <code>nums</code>.</p> | [longest-balanced-subarray-i.cpp](4045-longest-balanced-subarray-i/longest-balanced-subarray-i.cpp) |
 | 359 | [4047-longest-balanced-subarray-ii](4047-longest-balanced-subarray-ii) | <h2><a href="https://leetcode.com/problems/longest-balanced-subarray-ii">Longest Balanced Subarray II</a></h2> <img src='https://img.shields.io/badge/Difficulty-Hard-red' alt='Difficulty: Hard' /><hr><p>You are given an integer array <code>nums</code>.</p> | - |
 | 360 | [4055-longest-balanced-substring-i](4055-longest-balanced-substring-i) | <h2><a href="https://leetcode.com/problems/longest-balanced-substring-i">Longest Balanced Substring I</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p>You are given a string <code>s</code> consisting of lowercase English letters.</p> | [longest-balanced-substring-i.cpp](4055-longest-balanced-substring-i/longest-balanced-substring-i.cpp) |
-| 361 | [4087-maximum-substrings-with-distinct-start](4087-maximum-substrings-with-distinct-start) | <h2><a href="https://leetcode.com/problems/maximum-substrings-with-distinct-start">Maximum Substrings With Distinct Start</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p>You are given a string <code>s</code> consisting of lowercase English letters.</p> | [maximum-substrings-with-distinct-start.cpp](4087-maximum-substrings-with-distinct-start/maximum-substrings-with-distinct-start.cpp) |
+| 361 | [4056-longest-balanced-substring-ii](4056-longest-balanced-substring-ii) | <h2><a href="https://leetcode.com/problems/longest-balanced-substring-ii">Longest Balanced Substring II</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p>You are given a string <code>s</code> consisting only of the characters <code>&#39;a&#39;</code>, <code>&#39;b&#39;</code>, and <code>&#39;c&#39;</code>.</p> | [longest-balanced-substring-ii.cpp](4056-longest-balanced-substring-ii/longest-balanced-substring-ii.cpp) |
+| 362 | [4087-maximum-substrings-with-distinct-start](4087-maximum-substrings-with-distinct-start) | <h2><a href="https://leetcode.com/problems/maximum-substrings-with-distinct-start">Maximum Substrings With Distinct Start</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p>You are given a string <code>s</code> consisting of lowercase English letters.</p> | [maximum-substrings-with-distinct-start.cpp](4087-maximum-substrings-with-distinct-start/maximum-substrings-with-distinct-start.cpp) |
 <!-- AUTO-GEN: END -->
