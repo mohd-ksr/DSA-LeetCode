@@ -10,20 +10,18 @@
  * };
  */
 class Solution {
-private:
-    int solve(TreeNode* root, int &maxi){
+private:    
+    int dfs(TreeNode* root, int &ans){
         if(!root)return 0;
-        int l=solve(root->left,maxi);
-        int r=solve(root->right,maxi);
-        maxi=max(maxi,l+r);
+        int l = dfs(root->left, ans);
+        int r = dfs(root->right, ans);
+        ans = max(ans, 1+l+r);
         return 1+max(l,r);
     }
 public:
     int diameterOfBinaryTree(TreeNode* root) {
-       int maxi=0;
-       solve(root,maxi);
-       return maxi;
+        int ans = INT_MIN;
+        dfs(root, ans);
+        return ans-1;
     }
 };
-// Time complexity O(n);
-// Space complexity O(1);
