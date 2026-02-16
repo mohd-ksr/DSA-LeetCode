@@ -14,8 +14,8 @@ public:
         for(int i=0; i<32; i++){
             if(str[i]=='1')ans+=pow(2,i);
         }
-        cout<<str.length()<<" ";
-        cout<<str;
+        // cout<<str.length()<<" ";
+        // cout<<str;
         return ans;
     }
 };
