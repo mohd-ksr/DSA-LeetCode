@@ -11,24 +11,19 @@
  */
 class Solution {
 private:
-    void solve(TreeNode*root, int num, int &ans){
-        if(!root)return;
-        num<<=1;
-        if(root->val==1){
-            num+=1;
-        }
+    int solve(TreeNode*root, int sum){
+        if(!root)return 0;
+        sum<<=1;
+        if(root->val==1)sum+=1;
         if(!root->left && !root->right){
-            ans+=num;
-            return;
+            return sum;
         }
-        solve(root->left, num, ans);
-        solve(root->right, num, ans);
+
+        return solve(root->left, sum) + solve(root->right, sum);
     }
 public:
     int sumRootToLeaf(TreeNode* root) {
-        int num = 0;
-        int ans = 0;
-        solve(root, num, ans);
-        return ans;
+        
+        return solve(root, 0);
     }
 };
