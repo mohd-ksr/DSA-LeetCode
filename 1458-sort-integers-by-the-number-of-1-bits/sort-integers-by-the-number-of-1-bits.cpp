@@ -10,16 +10,19 @@ private:
     }
 public:
     vector<int> sortByBits(vector<int>& arr) {
-        priority_queue<pair<int,int>, vector<pair<int, int>>, greater<pair<int, int>>>pq;
-        for(int &a:arr){
-            pq.push({countBits(a), a});
+        vector<pair<int, int>>temp;
+        for(auto &a:arr){
+            temp.push_back({__builtin_popcount(a), a});
         }
-        int i=0;
-        while(!pq.empty()){
-            arr[i++]=pq.top().second;
-            pq.pop();
+        sort(temp.begin(), temp.end(), [](pair<int, int>&a, pair<int, int>&b){
+            if(a.first==b.first)return a.second<b.second;
+            return a.first < b.first;
+        });
+        vector<int>ans;
+        for(auto [f,s]:temp){
+            ans.push_back(s);
         }
-
-        return arr;
+        return ans;
+       
     }
 };
