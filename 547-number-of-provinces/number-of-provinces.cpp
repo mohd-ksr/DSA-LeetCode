@@ -1,31 +1,50 @@
-class Solution {
-private:    
-    void dfs(vector<vector<int>>&adjList, int u,  vector<char>&vis){
-        vis[u]='1';
-        for(auto v:adjList[u]){
-            if(vis[v]=='0')dfs(adjList, v, vis);
+class DSU{
+public:
+    vector<int>p,r;
+
+    DSU(int n){
+        p.resize(n+1);
+        r.resize(n+1, 0);
+        for(int i=0; i<=n; i++)p[i]=i;
+    }
+
+    int fup(int node){
+        if(p[node]==node)return node;
+        return p[node] = fup(p[node]);
+    }
+
+    void ubr(int u, int v){
+        int pu = fup(u);
+        int pv = fup(v);
+        if(pu==pv)return;
+        if(r[pu] < r[pv]){
+            p[pu] = pv;
+        }
+        else if(r[pu] > r[pv]){
+            p[pv] = pu;
+        }
+        else{
+            p[pv] = pu;
+            r[pu]++;
         }
     }
+};
+class Solution {
 public:
-    int findCircleNum(vector<vector<int>>& mat) {
-        int n = mat.size();
-        vector<vector<int>>adjList(n);
+    int findCircleNum(vector<vector<int>>& isConnected) {
+        int n = isConnected.size();
+        DSU ds(n);
+
         for(int i=0; i<n; i++){
-            for(int j=0; j<n; j++){
-                if(mat[i][j]==1 && i!=j){
-                    adjList[i].push_back(j);
-                    adjList[j].push_back(i);
+            for(int j=0; j<i; j++){
+                if(isConnected[i][j]==1){
+                    ds.ubr(i, j);
                 }
             }
         }
-
-        vector<char>vis(n,'0');
         int ans = 0;
         for(int i=0; i<n; i++){
-            if(vis[i]=='0'){
-                ans++;
-                dfs(adjList, i, vis);
-            }
+            if(ds.p[i]==i)ans++;
         }
         return ans;
     }
