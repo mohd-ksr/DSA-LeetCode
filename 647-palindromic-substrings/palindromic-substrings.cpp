@@ -13,7 +13,6 @@ public:
                 i--;
                 j++;
             }
-            if(k==0)continue;
             i=k-1;
             j=k;
             while(i>=0 && j<n){
