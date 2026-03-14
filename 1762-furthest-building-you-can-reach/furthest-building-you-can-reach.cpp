@@ -4,12 +4,12 @@ public:
         int n = heights.size();
         priority_queue<int, vector<int>, greater<>>pq;
         for(int i=0; i<n-1; i++){
-            int diff = heights[i+1] - heights[i];
-            if(diff>0){
-                pq.push(diff);
-            }
+            int diff = heights[i+1]-heights[i];
+            if(diff<=0) continue;
 
-            if(pq.size() > ladders){
+            pq.push(diff);
+
+            if(pq.size()>ladders){
                 bricks-=pq.top();
                 pq.pop();
             }
