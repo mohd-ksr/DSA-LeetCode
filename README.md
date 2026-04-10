@@ -41,7 +41,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 <!-- AUTO-GEN: START (do not remove or edit this line) -->
 ## 📊 Problem Count
-**Total Problems Solved:** 449
+**Total Problems Solved:** 450
 
 ## 📚 Problem Index
 
@@ -496,4 +496,5 @@ This project is licensed under the [MIT License](LICENSE).
 | 447 | [4055-longest-balanced-substring-i](4055-longest-balanced-substring-i) | <h2><a href="https://leetcode.com/problems/longest-balanced-substring-i">Longest Balanced Substring I</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p>You are given a string <code>s</code> consisting of lowercase English letters.</p> | [longest-balanced-substring-i.cpp](4055-longest-balanced-substring-i/longest-balanced-substring-i.cpp) |
 | 448 | [4056-longest-balanced-substring-ii](4056-longest-balanced-substring-ii) | <h2><a href="https://leetcode.com/problems/longest-balanced-substring-ii">Longest Balanced Substring II</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p>You are given a string <code>s</code> consisting only of the characters <code>&#39;a&#39;</code>, <code>&#39;b&#39;</code>, and <code>&#39;c&#39;</code>.</p> | [longest-balanced-substring-ii.cpp](4056-longest-balanced-substring-ii/longest-balanced-substring-ii.cpp) |
 | 449 | [4087-maximum-substrings-with-distinct-start](4087-maximum-substrings-with-distinct-start) | <h2><a href="https://leetcode.com/problems/maximum-substrings-with-distinct-start">Maximum Substrings With Distinct Start</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p>You are given a string <code>s</code> consisting of lowercase English letters.</p> | [maximum-substrings-with-distinct-start.cpp](4087-maximum-substrings-with-distinct-start/maximum-substrings-with-distinct-start.cpp) |
+| 450 | [4115-minimum-distance-between-three-equal-elements-i](4115-minimum-distance-between-three-equal-elements-i) | <h2><a href="https://leetcode.com/problems/minimum-distance-between-three-equal-elements-i">Minimum Distance Between Three Equal Elements I</a></h2> <img src='https://img.shields.io/badge/Difficulty-Easy-brightgreen' alt='Difficulty: Easy' /><hr><p>You are given an integer array <code>nums</code>.</p> | [minimum-distance-between-three-equal-elements-i.cpp](4115-minimum-distance-between-three-equal-elements-i/minimum-distance-between-three-equal-elements-i.cpp) |
 <!-- AUTO-GEN: END -->
