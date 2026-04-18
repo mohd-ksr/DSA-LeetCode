@@ -41,7 +41,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 <!-- AUTO-GEN: START (do not remove or edit this line) -->
 ## 📊 Problem Count
-**Total Problems Solved:** 456
+**Total Problems Solved:** 457
 
 ## 📚 Problem Index
 
@@ -503,4 +503,5 @@ This project is licensed under the [MIT License](LICENSE).
 | 454 | [4087-maximum-substrings-with-distinct-start](4087-maximum-substrings-with-distinct-start) | <h2><a href="https://leetcode.com/problems/maximum-substrings-with-distinct-start">Maximum Substrings With Distinct Start</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p>You are given a string <code>s</code> consisting of lowercase English letters.</p> | [maximum-substrings-with-distinct-start.cpp](4087-maximum-substrings-with-distinct-start/maximum-substrings-with-distinct-start.cpp) |
 | 455 | [4115-minimum-distance-between-three-equal-elements-i](4115-minimum-distance-between-three-equal-elements-i) | <h2><a href="https://leetcode.com/problems/minimum-distance-between-three-equal-elements-i">Minimum Distance Between Three Equal Elements I</a></h2> <img src='https://img.shields.io/badge/Difficulty-Easy-brightgreen' alt='Difficulty: Easy' /><hr><p>You are given an integer array <code>nums</code>.</p> | [minimum-distance-between-three-equal-elements-i.cpp](4115-minimum-distance-between-three-equal-elements-i/minimum-distance-between-three-equal-elements-i.cpp) |
 | 456 | [4119-minimum-distance-between-three-equal-elements-ii](4119-minimum-distance-between-three-equal-elements-ii) | <h2><a href="https://leetcode.com/problems/minimum-distance-between-three-equal-elements-ii">Minimum Distance Between Three Equal Elements II</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p>You are given an integer array <code>nums</code>.</p> | [minimum-distance-between-three-equal-elements-ii.cpp](4119-minimum-distance-between-three-equal-elements-ii/minimum-distance-between-three-equal-elements-ii.cpp) |
+| 457 | [4168-mirror-distance-of-an-integer](4168-mirror-distance-of-an-integer) | <h2><a href="https://leetcode.com/problems/mirror-distance-of-an-integer">Mirror Distance of an Integer</a></h2> <img src='https://img.shields.io/badge/Difficulty-Easy-brightgreen' alt='Difficulty: Easy' /><hr><p>You are given an integer <code>n</code>.</p> | [mirror-distance-of-an-integer.cpp](4168-mirror-distance-of-an-integer/mirror-distance-of-an-integer.cpp) |
 <!-- AUTO-GEN: END -->
