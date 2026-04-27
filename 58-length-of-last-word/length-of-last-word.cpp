@@ -1,16 +1,13 @@
 class Solution {
 public:
     int lengthOfLastWord(string s) {
-        string temp="";
-        for(int i=s.length()-1;i>=0; i--){
-            if(s[i]==' '){
-                if(temp.length()) break;
-                else continue;
-            }
-            temp+=s[i];
+        int ind = s.size()-1;
+        while(ind>=0 && s[ind]==' ')ind--;
+        int count = 0;
+        while(ind>=0 && s[ind]!=' '){
+            ind--;
+            count++;
         }
-        return temp.length();
+        return count;
     }
 };
-// Time complexity O(n)
-// Space complexity O(n)
