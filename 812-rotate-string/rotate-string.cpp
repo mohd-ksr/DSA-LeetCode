@@ -1,6 +1,8 @@
 class Solution {
 public:
     bool rotateString(string s, string goal) {
-        return(s.size()==goal.size() && (s+s).contains(goal));
+        if(s.size() != goal.size())return false;
+        s += s;
+        return s.contains(goal);
     }
 };
