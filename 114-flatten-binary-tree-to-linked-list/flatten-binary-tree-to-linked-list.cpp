@@ -10,28 +10,26 @@
  * };
  */
 class Solution {
-private:
-    void preOrder(TreeNode*root, stack<TreeNode*>&st){
-        while(!root)return;
-        st.push(root);
-        preOrder(root->left, st);
-        preOrder(root->right, st);
-    }
-    TreeNode* createLL(stack<TreeNode*>&st){
-        TreeNode * head=nullptr;
-        while(!st.empty()){
-            TreeNode* node = st.top(); st.pop();
-            node->left = nullptr;
-            node->right = head;
-            head=node;
-        }
-        return head;
-
-    }
+    vector<TreeNode*> ans;
 public:
+
+    void preorder(TreeNode* root){
+        if(root == NULL)return ;
+        ans.push_back(root);
+        preorder(root->left);
+        preorder(root->right);
+    }
     void flatten(TreeNode* root) {
-        stack<TreeNode*>st;
-        preOrder(root, st);
-        root= createLL(st);
+        if(root==NULL) return;
+        preorder(root);
+        for(int i = 0; i<ans.size()-1; i++){
+            ans[i]->left = NULL;
+            ans[i]->right = ans[i+1];
+        }
+        ans[ans.size()-1]-> left = NULL;
+        ans[ans.size()-1]-> right = NULL;
+        
+        
+        
     }
 };
