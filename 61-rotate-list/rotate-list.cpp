@@ -1,26 +1,33 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
 class Solution {
 public:
     ListNode* rotateRight(ListNode* head, int k) {
-        if(!head || !head->next)return head; // koi node nhi ya ek node h to kitta bhi rotate kr lo same rahega
-
-        ListNode* temp = head;
-        stack<ListNode*>st; // starting se last tak satck me push krenge taki last wale stack me top pe rahe
-        while(temp){
-            st.push(temp);
-            temp=temp->next;
+        if(head==NULL || head->next==NULL)return head;
+        stack<ListNode*>st;
+        ListNode*ptr = head;
+        while(ptr!=NULL){
+            st.push(ptr);
+            ptr=ptr->next;
         }
-        int size = st.size(); // satck ka size matlb number of nodes
-        k=k%size; // k ko size ke range me la lo
-        
-        while(k--){ // jab tk k 0 nhi ho jata
-            ListNode* last = st.top(); // last element nikalo stack se
+        int size = st.size();
+        k = k%size;
+
+        for(int i=0; i<k; i++){
+            ListNode * last = st.top();
             st.pop();
-
-            last->next=head; // satrting me connect kr do
-            head=last; // head ko piche le jao matlb starting me 
+            last->next = head;
+            head = last;
+            st.top()->next = NULL;
         }
-        st.top()->next = nullptr; // hamko pta hai stack top pe hamesha last element rahega to last element ka next null kr do
-
-        return head; // or updated head return kr do
+        return head;
     }
 };
