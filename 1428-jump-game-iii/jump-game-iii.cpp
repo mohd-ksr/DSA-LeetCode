@@ -1,16 +1,27 @@
 class Solution {
-private:
-    bool solve(int n, vector<int>& arr, int start, vector<int>&vis){
-        if(start>=n || start<0)return false;
-        if(vis[start])return false;
-        if(arr[start]==0)return true;
-        vis[start]=true;
-        return solve(n, arr, start+arr[start], vis) || solve(n, arr, start-arr[start], vis);
-    }
 public:
-    bool canReach(vector<int>& arr, int start) {
-        int n = arr.size();
-        vector<int>vis(n, false);
-        return solve(n, arr, start, vis);
+    bool canReach(vector<int>& nums, int start) {
+        int n = nums.size();
+        vector<vector<int>>adj(n);
+        for(int i=0; i<n; i++){
+            if(nums[i]==0)continue;
+            if(i-nums[i] >= 0) adj[i].push_back(i-nums[i]);
+            if(i+nums[i] < n) adj[i].push_back(i+nums[i]);
+        }
+        vector<bool>vis(n,false);
+        queue<int>q;
+        q.push(start);
+        vis[start]=true;
+        while(!q.empty()){
+            int node = q.front();q.pop();
+            if(nums[node]==0)return true;
+            for(auto nei:adj[node]){
+                if(!vis[nei]){
+                    vis[nei]=true;
+                    q.push(nei);
+                }
+            }
+        }
+        return false;
     }
 };
