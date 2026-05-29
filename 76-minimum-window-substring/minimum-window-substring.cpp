@@ -1,31 +1,35 @@
 class Solution {
 private:
-    bool isPresent(unordered_map<char, int>&mapp, unordered_map<char, int>&mapp2){
-        for(auto &it:mapp){
-            if(mapp2.find(it.first)==mapp2.end() || it.second > mapp2[it.first])return false;
+    unordered_map<char, int>m1;
+    unordered_map<char, int>m2;
+    bool isOK(){
+        for(auto it:m1){
+            if(m2.find(it.first)==m2.end() || m2[it.first] < it.second)return false;
         }
         return true;
     }
 public:
     string minWindow(string s, string t) {
-        int n = s.size();
-        unordered_map<char, int>mapp;
-        for(auto ch:t)mapp[ch]++;
-        int l=0, r=0;
-        int start=0, minLen=INT_MAX;
-        unordered_map<char, int>mapp2;
-        while(r<n){
-            mapp2[s[r]]++;
-            r++; 
-            while(isPresent(mapp, mapp2)){
-                if(minLen > r-l){
-                    minLen = r-l;
-                    start = l;
-                }
-                mapp2[s[l]]--;
-                l++;
-            }    
+        for(auto ch:t){
+            m1[ch]++;
         }
-        return (minLen==INT_MAX? "" : s.substr(start, minLen));
+        int i=0,j=0;
+        int minLen = INT_MAX;
+        int start = 0;
+        int m = s.size();
+        while(j<m){
+            m2[s[j]]++;
+            while(isOK()){
+                if(minLen > j-i+1){
+                    minLen = j-i+1;
+                    start = i;
+                }
+                m2[s[i]]--;
+                i++;
+            }
+            j++;
+        }
+        if(minLen==INT_MAX)return "";
+        return s.substr(start, minLen);
     }
 };
