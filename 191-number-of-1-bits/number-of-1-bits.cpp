@@ -1,11 +1,11 @@
 class Solution {
 public:
     int hammingWeight(int n) {
-        // Brian Kernighan’s Algo
         int ans=0;
-        while(n){
-            n&=(n-1);
-            ans++;
+        while(n!=0){
+            int b = n&1;
+            if(b==1)ans++;
+            n=n>>1;
         }
         return ans;
     }
