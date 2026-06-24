@@ -1,59 +1,101 @@
-class Solution {
-private:
-    int r,c;
-    int dfs(vector<vector<int>>&grid, int i, int j, int &key){
-        if(i<0 || i>=r || j<0 || j>=c || grid[i][j]!=1)return 0;
-        grid[i][j]=key;
-        return 1 + dfs(grid, i-1, j, key) + dfs(grid, i, j-1, key) + dfs(grid, i+1, j, key) + dfs(grid, i, j+1, key);
-    }
+class DSU{
+// private:
+//     vector<int>parent,size;
 public:
-    int largestIsland(vector<vector<int>>& grid) {
-        this->r = grid.size();
-        this->c = grid[0].size();
-        unordered_map<int, int>mapp;
-        int key=2;
-        for(int i=0; i<r; i++){
-            for(int j=0; j<c; j++){
-                if(grid[i][j]==1){
-                    mapp[key]=dfs(grid, i, j, key);
-                    key++;
-                }
-            }
+    vector<int>parent,size;
+    DSU(int n){
+        parent.resize(n+1);
+        size.resize(n+1,1);
+        for(int i=0; i<=n; i++){
+            parent[i]=i;
         }
-
-        if(mapp.size()==0)return 1;
-        if(mapp.size()==1){
-            return (mapp[2]==r*c? mapp[2]:mapp[2]+1);
+    }
+    
+    int findUlpParent(int node){
+        if(node==parent[node])return node;
+        return parent[node]=findUlpParent(parent[node]);
+    }
+    void unionBySize(int u, int v){
+        int ulp_u = findUlpParent(u);
+        int ulp_v = findUlpParent(v);
+        if(ulp_u==ulp_v)return;
+        
+        if(size[ulp_u] < size[ulp_v]){
+            parent[ulp_u] = ulp_v;
+            size[ulp_v]+=size[ulp_u];
         }
-
-        int ans = 1;
-
-        for(int i=0; i<r; i++){
-            for(int j=0; j<c; j++){
-                if(grid[i][j]==0){
-                    unordered_set<int>st;
-                    if(i-1>=0 && grid[i-1][j]>1){
-                        st.insert(grid[i-1][j]);
-                    }
-                    if(j-1>=0 && grid[i][j-1]>1){
-                        st.insert(grid[i][j-1]);
-                    }
-                    if(i+1<r && grid[i+1][j]>1){
-                        st.insert(grid[i+1][j]);
-                    }
-                    if(j+1<c && grid[i][j+1]>1){
-                        st.insert(grid[i][j+1]);
-                    }
-
-                    int temp = 1;
-                    for(auto it:st){
-                        temp+=mapp[it];
-                    }
-                    ans = max(ans, temp);
-                }
-            }
+        else{
+            parent[ulp_v] = ulp_u;
+            size[ulp_u]+=size[ulp_v];
         }
-
-        return ans;
     }
 };
+
+class Solution {
+public:
+    int largestIsland(vector<vector<int>>& grid) {
+        int n = grid.size();
+        DSU ds(n*n);
+
+        for(int r=0; r<n; r++){
+            for(int c=0; c<n; c++){
+                if(grid[r][c]==0)continue;
+                int dr[] = {-1,0,1,0};
+                int dc[] = {0,1,0,-1};
+
+                for(int i=0; i<4; i++){
+                    int adjR = r+dr[i];
+                    int adjC = c+dc[i];
+
+                    if(adjR>=0 && adjR<n && adjC>=0 && adjC<n && grid[adjR][adjC]==1){
+                        int nodeN = r*n+c;
+                        int adjNodeN = adjR*n+adjC;
+                        ds.unionBySize(nodeN, adjNodeN);
+                    }
+                }
+            }
+        }
+        int ans = 0;
+        for(int r=0; r<n; r++){
+            for(int c=0; c<n; c++){
+                if(grid[r][c]==1)continue;
+                int dr[] = {-1,0,1,0};
+                int dc[] = {0,1,0,-1};
+                unordered_set<int>compos;
+                for(int i=0; i<4; i++){
+                    int adjR = r+dr[i];
+                    int adjC = c+dc[i];
+
+                    if(adjR>=0 && adjR<n && adjC>=0 && adjC<n && grid[adjR][adjC]==1){
+                        int adjNodeN = adjR*n+adjC;
+                        compos.insert(ds.findUlpParent(adjNodeN));
+                    }
+                }
+                int totalSize = 1;
+                for(auto comp:compos){
+                    totalSize+=ds.size[comp];
+                }
+                ans = max(ans, totalSize);
+            }
+        }
+        return ans==0?n*n:ans;
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
