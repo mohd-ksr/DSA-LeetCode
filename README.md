@@ -5,6 +5,7 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 This repository contains my **daily LeetCode solutions**, organized by problem number and title. All implementations are in **C++**, aimed at tracking progress and practicing clean code.
+- My LeetCode Profile - https://leetcode.com/u/Mo_Kausar/
 
 ---
 
