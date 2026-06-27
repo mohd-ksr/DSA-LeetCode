@@ -1,32 +1,33 @@
 class Solution {
+private:
+    void rev(string &s, int l, int h){
+        while(l<h){
+            swap(s[l],s[h]);
+            l++;
+            h--;
+        }
+    }
 public:
     string reverseParentheses(string s) {
-        string ans = "";
-        stack<char> st;
+        stack<int>st;
+        queue<pair<int, int>>q;
+        for(int i=0; i<s.size(); i++){
+            if(s[i]=='(')st.push(i);
+            else if(s[i]==')'){
+                q.push({st.top(), i});
+                st.pop();
+            }
+        }
+
+        while(!q.empty()){
+            rev(s, q.front().first+1, q.front().second-1);
+            q.pop();
+        }
+        string ans="";
         for(auto ch:s){
-            if(ch==')'){
-                while(true){
-                    if(st.top()=='('){
-                        st.pop();
-                        break;
-                    }
-                    ans+=st.top();
-                    st.pop();
-                }
-                for(auto ch1:ans){
-                    st.push(ch1);
-                }
-                ans="";
-            }
-            else{
-                st.push(ch);
-            }
+            if(ch=='(' || ch==')')continue;
+            ans+=ch;
         }
-        while(!st.empty()){
-            ans+=st.top();
-            st.pop();
-        }
-        reverse(ans.begin(), ans.end());
         return ans;
     }
 };
