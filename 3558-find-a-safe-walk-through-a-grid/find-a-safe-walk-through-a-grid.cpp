@@ -3,14 +3,23 @@
 //     bool findSafeWalk(vector<vector<int>>& grid, int health) {
 //         int n = grid.size();
 //         int m = grid[0].size();
-//         priority_queue<tuple<int, int, int>, vector<tuple<int, int, int>>, greater<tuple<int, int, int>>>pq;
-//         pq.push({grid[0][0], 0, 0});
+//         for(int i=0; i<n; i++){
+//             for(int j=0; j<m; j++){
+//                 cout<<grid[i][j]<<" ";
+//             }
+//             cout<<endl;
+//         }
+//         cout<<endl;
+//         // vector<vector<int>>vis(n, vector<int>(m, 0));
+//         priority_queue<tuple<int, int, int, int>, vector<tuple<int, int, int, int>>, greater<tuple<int, int, int, int>>>pq;
+//         pq.push({grid[0][0], 0, 0, 0});
 //         grid[0][0]=-1;
 //         while(!pq.empty()){
-//             auto [val, i, j]=pq.top();
+//             auto [val, _, i, j]=pq.top();
 //             pq.pop();
+//             cout<<val<<" "<<i<<" "<<j<<endl;
 //             if(val==1)health--;
-//             if(health<0)return false;
+//             if(health<1)return false;
 //             if(i==n-1 && j==m-1)return true;
 
 //             int dx[] = {-1, 0, 1, 0};
@@ -19,7 +28,7 @@
 //                 int ni = i+dx[d];
 //                 int nj = j+dy[d];
 //                 if(ni>=0 && ni<n && nj>=0 && nj<m && grid[ni][nj]!=-1){
-//                     pq.push({grid[ni][nj], ni, nj});
+//                     pq.push({grid[ni][nj], -(ni+nj), ni, nj});
 //                     grid[ni][nj]=-1;
 //                 }
 //             }
