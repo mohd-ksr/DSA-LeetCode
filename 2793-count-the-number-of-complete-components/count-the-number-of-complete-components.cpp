@@ -43,13 +43,8 @@ public:
         }
         unordered_map<int, vector<int>>mapp;
         for(int i=0; i<n; i++){
-            // cout<<ds.findUlp(i)<<" ";
             mapp[ds.findUlp(i)].push_back(i);
         }
-        // cout<<endl;
-        // for(int i=0; i<n; i++){
-        //     cout<<dig[i]<<" ";
-        // }
 
         int ans = 0;
         for(auto it:mapp){
