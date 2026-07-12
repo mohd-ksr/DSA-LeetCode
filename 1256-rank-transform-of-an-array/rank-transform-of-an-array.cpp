@@ -3,6 +3,7 @@ public:
     vector<int> arrayRankTransform(vector<int>& arr) {
         int n = arr.size();
         if(n==0)return {};
+        
         vector<pair<int, int>>vec(n);
         for(int i=0; i<arr.size(); i++){
             vec[i] = {arr[i], i};
