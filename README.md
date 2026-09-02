@@ -42,7 +42,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 <!-- AUTO-GEN: START (do not remove or edit this line) -->
 ## 📊 Problem Count
-**Total Problems Solved:** 586
+**Total Problems Solved:** 587
 
 ## 📚 Problem Index
 
@@ -634,4 +634,5 @@ This project is licensed under the [MIT License](LICENSE).
 | 584 | [4168-mirror-distance-of-an-integer](4168-mirror-distance-of-an-integer) | <h2><a href="https://leetcode.com/problems/mirror-distance-of-an-integer">Mirror Distance of an Integer</a></h2> <img src='https://img.shields.io/badge/Difficulty-Easy-brightgreen' alt='Difficulty: Easy' /><hr><p>You are given an integer <code>n</code>.</p> | [mirror-distance-of-an-integer.cpp](4168-mirror-distance-of-an-integer/mirror-distance-of-an-integer.cpp) |
 | 585 | [4216-weighted-word-mapping](4216-weighted-word-mapping) | <h2><a href="https://leetcode.com/problems/weighted-word-mapping">Weighted Word Mapping</a></h2> <img src='https://img.shields.io/badge/Difficulty-Easy-brightgreen' alt='Difficulty: Easy' /><hr><p>You are given an array of strings <code>words</code>, where each string represents a word containing lowercase English letters.</p> | [weighted-word-mapping.cpp](4216-weighted-word-mapping/weighted-word-mapping.cpp) |
 | 586 | [4242-sum-of-gcd-of-formed-pairs](4242-sum-of-gcd-of-formed-pairs) | <h2><a href="https://leetcode.com/problems/sum-of-gcd-of-formed-pairs">Sum of GCD of Formed Pairs</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p>You are given an integer array <code>nums</code> of length <code>n</code>.</p> | [sum-of-gcd-of-formed-pairs.cpp](4242-sum-of-gcd-of-formed-pairs/sum-of-gcd-of-formed-pairs.cpp) |
+| 587 | [4256-construct-uniform-parity-array-i](4256-construct-uniform-parity-array-i) | <h2><a href="https://leetcode.com/problems/construct-uniform-parity-array-i">Construct Uniform Parity Array I</a></h2> <img src='https://img.shields.io/badge/Difficulty-Easy-brightgreen' alt='Difficulty: Easy' /><hr><p>You are given an array <code>nums1</code> of <code>n</code> <strong>distinct</strong> integers.</p> | [construct-uniform-parity-array-i.cpp](4256-construct-uniform-parity-array-i/construct-uniform-parity-array-i.cpp) |
 <!-- AUTO-GEN: END -->
