@@ -3,11 +3,8 @@ public:
     bool uniformArray(vector<int>& nums1) {
         bool odd=true, even=true;
 
-        int smallestOdd = INT_MAX, smallestEven = INT_MAX;
+        int smallestOdd = INT_MAX;
         for(auto num:nums1){
-            if(num%2==0 && num<smallestEven){
-                smallestEven=num;
-            }
             if(num%2==1 && num<smallestOdd){
                 smallestOdd=num;
             }
