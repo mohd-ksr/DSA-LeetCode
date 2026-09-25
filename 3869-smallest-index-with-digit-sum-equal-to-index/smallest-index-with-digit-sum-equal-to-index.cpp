@@ -1,7 +1,7 @@
 class Solution {
 private:
     int ds(int n){
-        return n!=0 ? n%10+ds(n/10) : 0;
+        return n==0?0:n%10+ds(n/10);
     }
 public:
     int smallestIndex(vector<int>& nums) {
