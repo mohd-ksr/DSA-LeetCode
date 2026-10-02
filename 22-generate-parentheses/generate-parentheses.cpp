@@ -1,20 +1,18 @@
 class Solution {
 private:
-    void generate(int &n, vector<string>&ans, string temp, int o, int c){
-        if(temp.size()==2*n){
+    vector<string>ans;
+    int n;
+    void solve(int oc, int cc, string temp){
+        if(oc+cc == 2*n){
             ans.push_back(temp);
-            return;
         }
-        if(o<n)generate(n,ans,temp+'(',o+1,c);
-        if(o>c)generate(n,ans,temp+')',o,c+1);
+        if(oc<n)solve(oc+1, cc, temp+'(');
+        if(cc<oc)solve(oc, cc+1, temp+')');
     }
 public:
     vector<string> generateParenthesis(int n) {
-        vector<string>ans;
-        int o=0,c=0;
-        generate(n,ans,"",o,c);
+        this->n = n;
+        solve(0,0,"");
         return ans;
     }
 };
-// Time Complexity O(4^n / √n)
-// Space Complexity O(n)
