@@ -20,6 +20,33 @@ private:
     }
 public:
     bool checkValidString(string s) {
-        return solve(0, 0, s);
+        // return solve(0, 0, s);
+        int n = s.size();
+        vector<vector<bool>>dp(n+1, vector<bool>(n+1, false));
+        dp[n][0]=true;
+        for(int i=n-1; i>=0; i--){
+            for(int b=0; b<=n; b++){
+                if(s[i]=='('){
+                    if(b+1<=n){
+                        dp[i][b] = dp[i+1][b+1];
+                    }
+                }
+                else if(s[i]==')'){
+                    if(b>0){
+                        dp[i][b] = dp[i+1][b-1];
+                    }
+                }
+                else{
+                    dp[i][b] = dp[i+1][b];
+                    if(b+1<=n){
+                        dp[i][b] = dp[i][b] || dp[i+1][b+1];
+                    }
+                    if(b>0){
+                        dp[i][b] = dp[i][b] || dp[i+1][b-1];
+                    }
+                }
+            }
+        }
+        return dp[0][0];
     }
 };
