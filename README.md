@@ -42,7 +42,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 <!-- AUTO-GEN: START (do not remove or edit this line) -->
 ## 📊 Problem Count
-**Total Problems Solved:** 626
+**Total Problems Solved:** 627
 
 ## 📚 Problem Index
 
@@ -674,4 +674,5 @@ This project is licensed under the [MIT License](LICENSE).
 | 624 | [4258-construct-uniform-parity-array-ii](4258-construct-uniform-parity-array-ii) | <h2><a href="https://leetcode.com/problems/construct-uniform-parity-array-ii">Construct Uniform Parity Array II</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p>You are given an array <code>nums1</code> of <code>n</code> <strong>distinct</strong> integers.</p> | [construct-uniform-parity-array-ii.cpp](4258-construct-uniform-parity-array-ii/construct-uniform-parity-array-ii.cpp) |
 | 625 | [4284-smallest-stable-index-i](4284-smallest-stable-index-i) | <h2><a href="https://leetcode.com/problems/smallest-stable-index-i">Smallest Stable Index I</a></h2> <img src='https://img.shields.io/badge/Difficulty-Easy-brightgreen' alt='Difficulty: Easy' /><hr><p>You are given an integer array <code>nums</code> of length <code>n</code> and an integer <code>k</code>.</p> | [smallest-stable-index-i.cpp](4284-smallest-stable-index-i/smallest-stable-index-i.cpp) |
 | 626 | [4285-smallest-stable-index-ii](4285-smallest-stable-index-ii) | <h2><a href="https://leetcode.com/problems/smallest-stable-index-ii">Smallest Stable Index II</a></h2> <img src='https://img.shields.io/badge/Difficulty-Medium-orange' alt='Difficulty: Medium' /><hr><p>You are given an integer array <code>nums</code> of length <code>n</code> and an integer <code>k</code>.</p> | [smallest-stable-index-ii.cpp](4285-smallest-stable-index-ii/smallest-stable-index-ii.cpp) |
+| 627 | [4342-create-grid-with-exactly-one-path](4342-create-grid-with-exactly-one-path) | <h2><a href="https://leetcode.com/problems/create-grid-with-exactly-one-path">Create Grid With Exactly One Path</a></h2> <img src='https://img.shields.io/badge/Difficulty-Easy-brightgreen' alt='Difficulty: Easy' /><hr><p>You are given two integers <code>m</code> and <code>n</code>, representing the number of rows and columns of a grid.</p> | [create-grid-with-exactly-one-path.cpp](4342-create-grid-with-exactly-one-path/create-grid-with-exactly-one-path.cpp) |
 <!-- AUTO-GEN: END -->
