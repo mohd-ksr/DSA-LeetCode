@@ -3,26 +3,28 @@ public:
     vector<int> eventualSafeNodes(vector<vector<int>>& graph) {
         int n = graph.size();
         vector<int>adj[n];
-        vector<int>id(n, 0);
-        for(int u=0; u<n; u++){
-            for(auto v:graph[u]){
-                adj[v].push_back(u);
-                id[u]++;
+        vector<int>inDeg(n,0);
+        for(int i=0; i<n; i++){
+            for(int nei:graph[i]){
+                adj[nei].push_back(i);
+                inDeg[i]++;
             }
         }
         queue<int>q;
         for(int i=0; i<n; i++){
-            if(id[i]==0)q.push(i);
+            if(inDeg[i]==0)q.push(i);
         }
         vector<int>ans;
         while(!q.empty()){
             int node = q.front();
             q.pop();
-            ans.push_back(node);
-            for(auto nei:adj[node]){
-                id[nei]--;
-                if(id[nei]==0)q.push(nei);
+            for(int nei:adj[node]){
+                inDeg[nei]--;
+                if(inDeg[nei]==0){
+                    q.push(nei);
+                }
             }
+            ans.push_back(node);
         }
         sort(ans.begin(), ans.end());
         return ans;
