@@ -3,26 +3,38 @@ private:
     priority_queue<int>left;
     priority_queue<int, vector<int>, greater<int>>right;
 public:
-    MedianFinder(){}
+    MedianFinder() {
+        
+    }
     
     void addNum(int num) {
-        left.push(num);
-        right.push(left.top());
-        left.pop();
-
-        if(right.size() > left.size()){
-            left.push(right.top());
-            right.pop();
+        if(left.size()<=right.size()){
+            left.push(num);
+        }
+        else{
+            right.push(num);
+        }
+        int ls = left.size(), rs = right.size();
+        while(ls>0 && rs>0){
+            if(left.top() > right.top()){
+                int leftMax = left.top();
+                left.pop();
+                int rightMin = right.top();
+                right.pop();
+                left.push(rightMin);
+                right.push(leftMax);
+            }
+            else break;
         }
     }
     
     double findMedian() {
-        if(right.size() == left.size()){
-            return (left.top() + right.top())/2.0;
+        if(left.size()==right.size()){
+            int a = left.top();
+            int b = right.top();
+            return double(a+ b) / 2.0;
         }
-        else{
-            return left.top();
-        }
+        else return (double)left.top();
     }
 };
 
