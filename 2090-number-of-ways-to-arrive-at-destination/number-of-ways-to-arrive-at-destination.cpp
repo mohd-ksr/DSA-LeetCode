@@ -19,7 +19,7 @@ public:
         while(!pq.empty()){
             auto [time, node] = pq.top();
             pq.pop();
-            if(time > dist[node]) continue;
+            // if(time > dist[node]) continue;
             for(auto it:adj[node]){
                 int nei = it.first;
                 long long t = it.second;
