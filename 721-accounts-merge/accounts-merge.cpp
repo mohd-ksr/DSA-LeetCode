@@ -1,25 +1,23 @@
 class DSU{
 private:
-    vector<int>rank,parent;
+    vector<int>parent,rank;
 public:
     DSU(int n){
-        rank.resize(n+1, 0);
+        rank.resize(n+1,0);
         parent.resize(n+1);
         for(int i=0; i<=n; i++){
             parent[i]=i;
         }
     }
-    
-    int findUlpParent(int node){
-        if(node==parent[node])return node;
-        return parent[node]=findUlpParent(parent[node]);
+    int findUlp(int node){
+        if(parent[node]==node)return node;
+        return parent[node] = findUlp(parent[node]);
     }
-    
     void unionByRank(int u, int v){
-        int ulp_u = findUlpParent(u);
-        int ulp_v = findUlpParent(v);
-        if(ulp_u==ulp_v)return;
-        
+        int ulp_u = findUlp(u);
+        int ulp_v = findUlp(v);
+        if(ulp_u == ulp_v)return;
+
         if(rank[ulp_u] < rank[ulp_v]){
             parent[ulp_u] = ulp_v;
         }
@@ -32,44 +30,49 @@ public:
         }
     }
 };
-
 class Solution {
 public:
     vector<vector<string>> accountsMerge(vector<vector<string>>& accounts) {
         int n = accounts.size();
-        unordered_map<string, int>mapp;
         DSU ds(n);
+        unordered_map<string, int>emailInd;
         for(int i=0; i<n; i++){
             for(int j=1; j<accounts[i].size(); j++){
-                string mail = accounts[i][j];
-                if(mapp.find(mail)==mapp.end()){
-                    mapp[mail]=i;
+                string email = accounts[i][j];
+                if(emailInd.find(email)==emailInd.end()){
+                    emailInd[email] = i;
                 }
                 else{
-                    ds.unionByRank(i, mapp[mail]);
+                    ds.unionByRank(i, emailInd[email]);
                 }
             }
         }
-        unordered_map<int, vector<string>>mapp2;
-        for(auto it:mapp){
-            string mail = it.first;
-            int node = ds.findUlpParent(it.second);
-            mapp2[node].push_back(mail);
+        unordered_map<int, vector<string>>indexedMapedEmails;
+        for(auto it:emailInd){
+            string email = it.first;
+            int ind = it.second;
+            int actualInd = ds.findUlp(ind);
+            indexedMapedEmails[actualInd].push_back(email);
         }
-
-
         vector<vector<string>>ans;
-        for(auto it:mapp2){
+        for(auto it:indexedMapedEmails){
             int ind = it.first;
-            vector<string>mails = it.second;
-            sort(mails.rbegin(), mails.rend());
-            mails.push_back(accounts[ind][0]);
-            reverse(mails.begin(), mails.end());
-            ans.push_back(mails);
+            vector<string> mergedEmails = it.second;
+            sort(mergedEmails.rbegin(), mergedEmails.rend());
+            string name = accounts[ind][0];
+            mergedEmails.push_back(name);
+            reverse(mergedEmails.begin(), mergedEmails.end());
+            ans.push_back(mergedEmails);
         }
         return ans;
     }
 };
+
+
+
+
+
+
 
 
 
