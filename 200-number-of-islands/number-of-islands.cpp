@@ -1,45 +1,68 @@
-class Solution {
+class DSU{
 private:
-    int r,c;
-    void bfs(int si, int sj, vector<vector<char>>& grid){
-        queue<pair<int, int>>q;
-        q.push({si, sj});
-        grid[si][sj]='0';
-        while(!q.empty()){
-            auto [i, j]=q.front(); q.pop();
-            if(i-1>=0 && grid[i-1][j]=='1'){
-                grid[i-1][j]='0';
-                q.push({i-1, j});
-            }
-            if(j-1>=0 && grid[i][j-1]=='1'){
-                grid[i][j-1]='0';
-                q.push({i, j-1});
-            }
-            if(i+1<r && grid[i+1][j]=='1'){
-                grid[i+1][j]='0';
-                q.push({i+1, j});
-            }
-            if(j+1<c && grid[i][j+1]=='1'){
-                grid[i][j+1]='0';
-                q.push({i, j+1});
-            }
+    vector<int>size, parent;
+public:
+    DSU(int n){
+        size.resize(n+1, 1);
+        parent.resize(n+1);
+        for(int i=0; i<=n; i++){
+            parent[i] = i;
         }
     }
+
+    int findUlp(int node){
+        if(parent[node]==node)return node;
+        return parent[node] = findUlp(parent[node]);
+    }
+
+    void unionBySize(int u, int v){
+        int ulp_u = findUlp(u);
+        int ulp_v = findUlp(v);
+        if(ulp_u == ulp_v) return; 
+        
+        if(size[ulp_u] < size[ulp_v]){
+            parent[ulp_u] = ulp_v;
+            size[ulp_v] += size[ulp_u];
+        }
+        else{
+            parent[ulp_v] = ulp_u;
+            size[ulp_u] += size[ulp_v];
+        }
+    }
+};
+class Solution {
 public:
     int numIslands(vector<vector<char>>& grid) {
-        this-> r = grid.size();
-        this-> c = grid[0].size();
-
-        int ans=0;
-        queue<pair<int, int>>q;
+        int r = grid.size();
+        int c = grid[0].size();
+        DSU ds(r*c);
+        int dx[] = {-1, 0, 1, 0};
+        int dy[] = {0, -1, 0, 1};
         for(int i=0; i<r; i++){
             for(int j=0; j<c; j++){
                 if(grid[i][j]=='1'){
-                    bfs(i, j, grid);
-                    ans++;
+                    int node = c*i+j;
+                    for(int k=0; k<4; k++){
+                        int ni = i+dx[k];
+                        int nj = j+dy[k];
+                        if(ni>=0 && ni<r && nj>=0 && nj<c && grid[ni][nj]=='1'){
+                            int nei = c*ni+nj;
+                            ds.unionBySize(node, nei);
+                        }
+                    }
                 }
             }
         }
-        return ans;
+
+        unordered_set<int>st;
+        for(int i=0; i<r; i++){
+            for(int j=0; j<c; j++){
+                if(grid[i][j]=='1'){
+                    int node = c*i+j;
+                    st.insert(ds.findUlp(node));
+                }
+            }
+        }
+        return st.size();
     }
 };
