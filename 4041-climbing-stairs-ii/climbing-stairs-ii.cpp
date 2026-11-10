@@ -1,24 +1,16 @@
 class Solution {
-private:
-    int n;
-    vector<long long>dp;
-    long long solve(int ind, vector<int>& costs){
-        if(ind>=n)return 0;
-        if(dp[ind]!=-1)return dp[ind];
-        long long ans = LLONG_MAX;
-        for(int i=ind+1; i<=min(n, ind+3); i++){
-            long long val = (long long)(i-ind);
-            ans = min(ans, ((long long)costs[i] + val*val) + solve(i, costs));
-        }
-        return dp[ind] = ans;
-    }
 public:
     int climbStairs(int n, vector<int>& costs) {
-        reverse(costs.begin(), costs.end());
-        costs.push_back(0);
-        reverse(costs.begin(), costs.end());
-        this->n = n;
-        dp.resize(n+1, -1);
-        return (int)solve(0, costs);
+        if(n==1) return costs[0]+1;
+        vector<long long>dp(n+1, LLONG_MAX);
+        dp[0] = 0L;
+        dp[1] = costs[0] + 1LL;
+        dp[2] = min(dp[1] + costs[1] + 1LL, dp[0] + costs[1] + 4LL);
+        for(int j = 3; j<=n; j++){
+            dp[j] = min(dp[j], (long long)(costs[j-1] + 1LL) + dp[j-1]);
+            dp[j] = min(dp[j], (long long)(costs[j-1] + 4LL) + dp[j-2]);
+            dp[j] = min(dp[j], (long long)(costs[j-1] + 9LL) + dp[j-3]);
+        }
+        return (int)dp[n];
     }
 };
